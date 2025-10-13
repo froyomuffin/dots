@@ -90,7 +90,7 @@
     "format": "<span color=\"#F0C674\">REC</span> {}",
     "max-lendth": 40,
     "interval": 1,
-    "exec": "fuser -v /dev/video* &> /dev/null && echo ∅ || echo ◯"
+    "exec": "fuser -v /dev/video* &> /dev/null && echo ' ' || echo ' '"
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
