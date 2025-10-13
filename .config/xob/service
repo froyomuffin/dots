@@ -1,0 +1,26 @@
+#!/bin/bash
+
+XOBSOCK=$XDG_RUNTIME_DIR/xob.sock
+TAIL_CMD="tail -f $XOBSOCK"
+
+COMMAND=$1
+VALUE=$2
+
+case $COMMAND in
+  run)
+    # Create a fifo
+    mkfifo $XOBSOCK 2> /dev/null
+
+    # Kill existing running sessions
+    ps -ef | grep "$TAIL_CMD" | grep -v grep | awk '{ print $2 }' | xargs kill 2> /dev/null
+
+    # Start a mini service
+    eval $TAIL_CMD | xob & disown
+    ;;
+  update)
+    echo $VALUE > $XOBSOCK
+    ;;
+  *)
+    echo "Incorrect usage"
+esac
+
