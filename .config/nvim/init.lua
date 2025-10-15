@@ -407,10 +407,10 @@ require('tabby').setup({
 require('fzf-lua').setup({
   grep = {
     exe = 'rg',
-    rg_opts = '--color=never --no-heading --with-filename --line-number --column --smart-case --no-ignore-vcs',
+    rg_opts = '-L --color=never --no-heading --with-filename --line-number --column --smart-case --no-ignore-vcs',
   },
   files = {
-    cmd = 'rg --files --no-ignore-vcs --hidden -g "!.git"',
+    cmd = 'rg -L --files --no-ignore-vcs --hidden -g "!.git"',
   },
   -- Enable ripgrep for all grep operations
   actions = {
@@ -432,8 +432,10 @@ vim.keymap.set('n', '<leader>p', ':FzfLua files<CR>')
 
 -- Bind codecompanion
 vim.keymap.set({'n', 'v'}, '<leader>l', '<cmd>CodeCompanion<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>o', '<cmd>CodeCompanion<CR>')
 vim.keymap.set({'n', 'v'}, '<leader>]', '<cmd>CodeCompanion<CR>')
 vim.keymap.set({'n', 'v'}, '<leader>[', '<cmd>CodeCompanionChat Toggle<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>i', '<cmd>CodeCompanionChat Toggle<CR>')
 vim.keymap.set({'n', 'v'}, '<leader><leader><leader>', '<cmd>CodeCompanionChat Toggle<CR>')
 
 -- Indents

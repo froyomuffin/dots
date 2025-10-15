@@ -56,7 +56,7 @@ bar {
 }
 
 # Default terminal
-set $term ghostty
+set $term wezterm
 
 # Default browser
 set $browser firefox
