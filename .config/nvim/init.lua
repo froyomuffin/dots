@@ -33,8 +33,6 @@ require("lazy").setup({
   "djoshea/vim-autoread",
   
   -- FZF
-  -- { "junegunn/fzf", build = "./install --bin" },
-  -- "junegunn/fzf.vim",
   {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -62,7 +60,12 @@ require("lazy").setup({
   "ojroques/nvim-lspfuzzy",
   
   -- Goto preview
-  "rmagatti/goto-preview",
+  {
+    "rmagatti/goto-preview",
+    dependencies = { "rmagatti/logger.nvim" },
+    event = "BufEnter",
+    config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
+  },
   
   -- Multiple cursors
   "terryma/vim-multiple-cursors",
