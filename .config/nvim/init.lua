@@ -318,7 +318,8 @@ vim.keymap.set('n', '<leader>b', ':Buffers<CR>')
 vim.keymap.set('n', '<leader>c', ':Commentary<CR>')
 
 -- Open git line in browser
-vim.keymap.set('n', '<leader>g', ':GBrowse<CR>')
+vim.keymap.set('n', '<leader>g', ':.,.GBrowse<CR>')
+vim.keymap.set('v', '<leader>g', ":'<,'>GBrowse<CR>")
 
 -- Colorizing hexcodes
 vim.g.colorizer_auto_filetype = 'css,html,conf'

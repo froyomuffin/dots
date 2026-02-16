@@ -17,7 +17,7 @@
 #window {
     background-color: @background-color;
     border:           1;
-    border-radius: 8;
+    // border-radius: 8;
     border-color: @bordercolor;
     padding:          5;
     width: 1024;

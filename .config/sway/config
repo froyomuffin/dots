@@ -1,6 +1,8 @@
 # Global mod key
 set $mod Mod4
 
+set $alt Mod1
+
 # Set up wob
 set $XOBSERVICE $HOME/.config/xob/service
 exec_always $XOBSERVICE run
@@ -8,7 +10,7 @@ exec_always $XOBSERVICE run
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # Background
-output * bg $HOME/wallpaper/kerbal.jpg fill
+output * bg $HOME/wallpaper/kerbal-mid.png fill
 
 # HIDPI
 output * scale 1.4 mode 5120x2160@120Hz
@@ -20,9 +22,11 @@ output * adaptive_sync on
 bindsym Ctrl+Shift+Tab exec --no-startup-id /bin/switch-input toggle
 
 # Hack to hide tabbed borders
-font monospace 1
+# font monospace 1
 titlebar_border_thickness 0                                                     
-titlebar_padding 0
+# titlebar_padding 0
+client.focused #FFFFFF #373B41 #C5C8C6
+title_align center
 
 # Switch to vertical or horizontal split
 bindsym $mod+equal splith
@@ -38,6 +42,12 @@ bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+d floating toggle
+
+# Speed up repeats
+input type:keyboard {
+    repeat_delay 300
+    repeat_rate 50
+}
 
 # Cursor management
 seat * hide_cursor 8000
@@ -56,7 +66,7 @@ bar {
 }
 
 # Default terminal
-set $term wezterm
+set $term ghostty
 
 # Default browser
 set $browser firefox
@@ -112,8 +122,19 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-
 bindsym $mod+Escape workspace back_and_forth 
+
+bindsym $alt+q workspace number 1
+bindsym $alt+w workspace number 2
+bindsym $alt+e workspace number 3
+bindsym $alt+r workspace number 4
+bindsym $alt+t workspace number 5
+bindsym $alt+y workspace number 6
+bindsym $alt+u workspace number 7
+bindsym $alt+i workspace number 8
+bindsym $alt+o workspace number 9
+bindsym $alt+p workspace number 10
+bindsym $alt+Escape workspace back_and_forth 
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
@@ -144,6 +165,8 @@ gaps inner 10px
 
 # Borders
 default_border none
+default_floating_border none
+hide_edge_borders both
 
 # Enable tiling via autotiling
 exec_always --no-startup-id autotiling
@@ -158,7 +181,7 @@ input * {
 }
 
 # Suspend
-bindsym Ctrl+Shift+S exec systemctl suspend
+bindsym Ctrl+Shift+S exec /bin/suspend
 
 # Bind media keys
 bindsym XF86AudioMute exec volume-control toggle-mute
@@ -212,6 +235,9 @@ assign [class="steam"] 9
 # for_window [class="Steam"] move to workspace 9
 assign [app_id="spotify"] 10
 # for_window [class="Spotify"] move to workspace 10
+
+# Float 1Password by default
+for_window [app_id="1password"] floating enable
 
 include /etc/sway/config.d/*
 
